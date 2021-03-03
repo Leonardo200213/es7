@@ -21,8 +21,7 @@
 				
 				
 				<td>Scelga la lista a cui assegnare il Suo voto dall'elenco a comparsa qui sotto</td>
-				
-				<td>Lista: <br> Candidato:</td>
+			
 				
                 
                 </tr>
@@ -30,21 +29,21 @@
 <?php
 			session_start();
 			$candidato = $_POST['nome'];
-			$lista = $_SESSION['lista'];
-			$chiave = $_SESSION['id'];  //chiave della lista
-			echo"$chiave";
-			echo"$candidato";
+			$lista = $_SESSION['dropdown'];
+			$chiave = $_SESSION['id'];
+			echo $chiave;
+			echo $candidato;
 			
-			echo"<form method='POST' action='Page5.php'>
+			echo"<form method='POST' action='.php'>
 			<input name='id' type='hidden' value='$chiave' disabled/> <br/>
-			<label> LISTA: </label>
+			echo "<label> LISTA: </label>";
 			<input name='lista' type='text' value='$lista' disabled/> <br/>
-            <label> CANDIDATO: </label>
+            		echo "<label> CANDIDATO: </label>";
 			<input name='nome' type='text' value='$candidato' disabled/> <br/>
 			</form>";
 
 
-            $_SESSION['nomina'] = $candidato;
+            $_SESSION['candidato'] = $candidato;
 		?>				
 		
 		<button type="button" class="btn btn-success" onclick="location.href='conferma.php'">Conferma</button>
