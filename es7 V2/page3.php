@@ -22,50 +22,15 @@
 				<tr>
 				<td>Scelga il candidato a cui assegnare il Suo voto dall'elenco a comparsa qui sotto</td>
 				</tr>
-
-		 <?php
-				session_start();
-				$host = "localhost";
-				$user = "root";
-				$db = "elezioni";
-				$nome = $_POST['lista'];
-				$chiave = 0;
-					$connection=NULL;
-					$connection = new PDO("mysql:host=127.0.0.1;port=3307;dbname=elezioni", "root", "");
-
-					$chiave = GETID($connection, $nome);
-					$_SESSION['lista'] = $nome;
-					$_SESSION['id'] = $chiave;
-					$query = "SELECT cognome, nome FROM candidati WHERE id_lista = $chiave";
-					$result = $connection->query($query);
-					
-					echo"<div class='row'><div class='col-md-12'>
-					<form method='POST' action='page4.php'>
-					<select name='nome'>
-					<option> Selezionare candidato </option>";
-					while($row = $result->fetch(PDO::FETCH_OBJ)) 
-					{
-						echo"<option>$row->cognome _ $row->nome</option>";	
-					}
-					echo"</select>
-					<button type='submit' class='btn btn-success btn-lg'>
-					PROSEGUI </button>
-					</form></div> </div>";
-					$result->closeCursor();
-					$connection=NULL;
-					
-					function GETID($connection, $nome){
-						$chiave = 0;
-						$n = str_replace("'", "\'", $nome);
-						$query = "SELECT id_lista FROM liste WHERE nome_lista = '$n'";
-						$result = $connection->query($query);
-						while($row = $result->fetch(PDO::FETCH_OBJ)) 
-						{
-							$chiave = $row->id_lista;	
-						}
-						return $chiave;
-					}
-					
+				<select name="dropdown2" id="dropdown2">
+					<option value="gente">Per il bene della gente</option>
+					<option value="democrazia">Democrazia sempre</option>
+					<option value="viva">Viva l'Italia</option>
+					<option value="repubblica">Repubblica nuova</option>
+					<option value="presto">Facciamo presto!</option>
+				</select>
+		 		<?php
+					include "collegamento.php";
 				?>	
 				<button type="button" class="btn btn-success" onclick="location.href='page4.php'">Conferma</button>
 					</center>
