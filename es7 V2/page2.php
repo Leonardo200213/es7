@@ -22,6 +22,14 @@
 				<tr>
 				<td>Scelga la lista a cui assegnare il Suo voto dall'elenco a comparsa qui sotto</td>
 				</tr>
+				<select name="dropdown" id="dropdown">
+					<option value="gente">Per il bene della gente</option>
+					<option value="democrazia">Democrazia sempre</option>
+					<option value="viva">Viva l'Italia</option>
+					<option value="repubblica">Repubblica nuova</option>
+					<option value="presto">Facciamo presto!</option>
+				</select>
+				
 
 				<form method="POST" action="page3.php">
 			<?php
